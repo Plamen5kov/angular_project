@@ -5,8 +5,9 @@
             '$q',
             '$location',
             'identity',
+            "$rootScope",
             'BASE_URL',
-            function($http, $cookies, $q, $location, identity, BASE_URL) {
+            function($http, $cookies, $q, $location, identity, $rootScope, BASE_URL) {
                 
                 var AUTHENTICATION_COOKIE_KEY = '!__Authentication_Cookie_Key__!';
                 
@@ -27,6 +28,7 @@
                                 .then(function(tokenData) {
                                     deferred.resolve(response.data);
                                     preserveUserData(tokenData);
+                                    $rootScope.isAuthenticated = true;
                                 });
                         });
                     

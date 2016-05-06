@@ -12,13 +12,14 @@ angular.module('issueTracker.home', [
         '$scope',
         '$location',
         'authentication',
-        function($scope, $location, authentication) {
+        "$rootScope",
+        function($scope, $location, authentication, $rootScope) {
             if (authentication.isAuthenticated()) {
                 $location.path('/allProjects');
             }
             
             console.log("passing through HomeCtrl");
-            $scope.isAuthenticated = authentication.isAuthenticated();
+            $rootScope.isAuthenticated = authentication.isAuthenticated();
             $scope.register = function (user) {
                 authentication.registerUser(user)
                     .then(function(registeredUser) {

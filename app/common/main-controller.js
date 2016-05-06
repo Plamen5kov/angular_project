@@ -6,6 +6,6 @@ angular.module("issueTracker.common", [])
         function($scope, identity, authentication) {
             console.log("passing trhough main controller: auth?: "+ authentication.isAuthenticated())
             if(authentication.isAuthenticated()) {
-                $scope.isAuthenticated = true;
+                $rootScope.isAuthenticated = true;
             }
         }]);
