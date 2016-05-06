@@ -3,9 +3,9 @@ angular.module('issueTracker.common', [])
         '$scope',
         'identity',
         function($scope, identity) {
-            identity.getCurrentUser()
-                .then(function(user) {
-                    $scope.currentUser = user;
-                    $scope.isAuthenticated = true;
-                });
+            var user = identity.getCurrentUser()
+            if(user) {
+                $scope.currentUser = user;
+                $scope.isAuthenticated = true;
+            }
         }]);

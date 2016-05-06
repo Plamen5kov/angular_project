@@ -12,19 +12,17 @@ angular.module('issueTracker.users.identity', [])
         
             return {
                 getCurrentUser: function () {
-                    if (currentUser) {
-                        return $q.when(currentUser);
-                    }
-                    else {
-                        return deferred.promise;
-                    }
+                    var userFromSs = sessionStorage.currentUser;
+                    return userFromSs;
                 },
                 removeUserProfile: function() {
+                    console.log("something removing the current user")
                     currentUser = undefined;
                 },
                 requestUserProfile: function(user) {
+                    sessionStorage.currentUser = angular.toJson(user);
                     var userProfileDeferred = $q.defer();
-                    
+
                     var apiTokenBody = {
                         "username": user.email,
                         "password": user.password,

@@ -1,5 +1,6 @@
 angular.module('issueTracker.home', [
-        'issueTracker.users.authentication'
+        'issueTracker.users.authentication',
+        'issueTracker.allProjects'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
@@ -13,14 +14,13 @@ angular.module('issueTracker.home', [
         'authentication',
         function($scope, $location, authentication) {
             if (authentication.isAuthenticated()) {
-                // $location.path('/newsFeed');
-
+                $location.path('/allProjects');
             }
             
             $scope.register = function (user) {
                 authentication.registerUser(user)
                     .then(function(registeredUser) {
-                        // $location.path('/allProjects');     
+                        $location.path('/allProjects');
                     });
             };
         }]);

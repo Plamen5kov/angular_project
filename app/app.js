@@ -31,14 +31,17 @@ angular.module('issueTracker', [
             }
         }]);
     }])
-    .run(['$rootScope', '$location', 'authentication', function($rootScope, $location, authentication) {
+    .run(['$rootScope', '$location', 'authentication', 'identity', function($rootScope, $location, authentication, identity) {
         $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
             if (rejection == 'Unauthorized Access') {
                 $location.path('/');
             }
+            if(authentication.isAuthenticated()) {
+                $location.path('/allProjects')
+            }
         });
-        
-        authentication.refreshCookie();
+
+        console.log(authentication)
     }])
     .constant('jQuery', $)
     .constant('toastr', toastr)
