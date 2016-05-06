@@ -32,6 +32,16 @@ body {
     width: 250px;
 }
 
+.blue-text {
+  background-color: #00FFFF;
+  color: white;
+  font-weight: bold;
+}
+
+.main-buttons {
+  background-color: 009900;
+}
+
 input.ng-invalid.ng-dirty {
     background-color: pink;
 }

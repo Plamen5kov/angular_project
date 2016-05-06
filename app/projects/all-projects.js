@@ -11,9 +11,12 @@ angular.module("issueTracker.allProjects", ["issueTracker.users.authentication"]
         "$location",
         "authentication",
 		function allPRojectsCtrl($scope, $location, authentication) {
+            
+            console.log('loading app projects and we are authenticated: ' + authentication.isAuthenticated());
             if(!authentication.isAuthenticated()) {
                 $location.path("/")
             }
+            $scope.isAuthenticated = authentication.isAuthenticated();
 			$scope.navMessage = "this is all projects page!";
 		}
 	])

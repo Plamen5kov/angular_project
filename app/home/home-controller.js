@@ -17,6 +17,8 @@ angular.module('issueTracker.home', [
                 $location.path('/allProjects');
             }
             
+            console.log("passing through HomeCtrl");
+            $scope.isAuthenticated = authentication.isAuthenticated();
             $scope.register = function (user) {
                 authentication.registerUser(user)
                     .then(function(registeredUser) {
